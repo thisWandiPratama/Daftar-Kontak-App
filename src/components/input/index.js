@@ -10,6 +10,7 @@ const AddKontak = ({
   title,
   keyboardType,
   isTextArea,
+  value,
 }) => {
   return (
     <View>
@@ -18,11 +19,12 @@ const AddKontak = ({
             <Text style={styles.title}>{title}</Text>
             <TextInput
               placeholder={placeholder}
-              style={[styles.inputan,{textAlignVertical:'top'}]}
+              style={[styles.inputan, {textAlignVertical: 'top'}]}
               onChangeText={onChangeText}
               keyboardType={keyboardType}
-              multiline= {true}
-              numberOfLines = {4}
+              multiline={true}
+              numberOfLines={4}
+              value={value}
             />
           </View>
         : <View style={styles.input}>
@@ -32,6 +34,7 @@ const AddKontak = ({
               style={styles.inputan}
               onChangeText={onChangeText}
               keyboardType={keyboardType}
+              value={value}
             />
           </View>}
     </View>

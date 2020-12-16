@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import FIREBASE from '../../configs/FIREBASE';
 import Header from '../../components/headers';
-import { set } from 'react-native-reanimated';
+import {set} from 'react-native-reanimated';
 
 // create a component
 const Home = ({navigation}) => {
@@ -46,10 +46,9 @@ const Home = ({navigation}) => {
           onPress: () => {
             FIREBASE.database ().ref ('Kontak/' + key).remove ();
             setTimeout (() => {
-                setKontaksKey([])
+              setKontaksKey ([]);
               getData ();
             }, 3000);
-            // Alert.alert ('Hapus', 'Sukses Hapus Kontak');
           },
         },
       ],
@@ -91,7 +90,15 @@ const Home = ({navigation}) => {
                     justifyContent: 'center',
                   }}
                 >
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate ('Edit', {
+                        nama: kontaks[key].nama,
+                        no_hp: kontaks[key].no_hp,
+                        alamat: kontaks[key].alamat,
+                        key : key
+                      })}
+                  >
                     <FontAwesomeIcon icon={faEdit} size={20} color="#434" />
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => removeKontak (key)}>
